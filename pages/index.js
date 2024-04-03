@@ -1,7 +1,21 @@
+import PlaceCard from "@/components/PlaceCard";
+import { initialPlaces } from "@/lib/db";
+import { useState } from "react";
+
 export default function HomePage() {
+  const [places, setPlaces] = useState(initialPlaces);
+
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <ul>
+      {places.map((place) => (
+        <li key={place.id}>
+          <PlaceCard
+            image={place.image}
+            name={place.name}
+            location={place.location}
+          />
+        </li>
+      ))}
+    </ul>
   );
 }
