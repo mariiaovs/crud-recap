@@ -12,16 +12,13 @@ const StyledButton = styled.button`
   width: 5rem;
   padding: 0.5rem;
 `;
-export default function Form({ handleAddPlace }) {
+export default function Form({ id, handlePlace, defaultData }) {
   const router = useRouter();
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
-    handleAddPlace(data);
-    event.target.reset();
-    event.target.name.focus();
+    handlePlace(data, id);
     router.push("/");
   }
 
@@ -29,19 +26,45 @@ export default function Form({ handleAddPlace }) {
     <StyledForm onSubmit={handleSubmit}>
       <h2>Add new place</h2>
       <label htmlFor="name">
-        Name: <input name="name" id="name" required></input>
+        Name:{" "}
+        <input
+          name="name"
+          id="name"
+          defaultValue={defaultData?.name}
+          required
+        ></input>
       </label>
       <label htmlFor="location">
-        Location: <input name="location" id="location"></input>
+        Location:{" "}
+        <input
+          name="location"
+          id="location"
+          defaultValue={defaultData?.location}
+        ></input>
       </label>
       <label htmlFor="mapURL">
-        Map URL: <input name="mapURL" id="mapURL"></input>
+        Map URL:{" "}
+        <input
+          name="mapURL"
+          id="mapURL"
+          defaultValue={defaultData?.mapURL}
+        ></input>
       </label>
       <label htmlFor="image">
-        Image URL: <input name="image" id="image"></input>
+        Image URL:{" "}
+        <input
+          name="image"
+          id="image"
+          defaultValue={defaultData?.image}
+        ></input>
       </label>
       <label htmlFor="description">
-        Description: <input name="description" id="description"></input>
+        Description:{" "}
+        <input
+          name="description"
+          id="description"
+          defaultValue={defaultData?.description}
+        ></input>
       </label>
       <StyledButton>Submit</StyledButton>
     </StyledForm>

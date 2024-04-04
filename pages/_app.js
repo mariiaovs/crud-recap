@@ -24,6 +24,24 @@ export default function App({ Component, pageProps }) {
     router.push("/");
   }
 
+  function handleEditPlace(formData, id) {
+    console.log("handleEditPlace", formData);
+    setPlaces(
+      places.map((place) => {
+        if (place.id === id)
+          return {
+            id: place.id,
+            name: formData.name,
+            location: formData.location,
+            image: formData.image,
+            mapURL: formData.mapURL,
+            description: formData.description,
+          };
+        else return place;
+      })
+    );
+    console.log(places);
+  }
   return (
     <>
       <GlobalStyle />
@@ -32,6 +50,7 @@ export default function App({ Component, pageProps }) {
         places={places}
         handleAddPlace={handleAddPlace}
         handleDeletePlace={handleDeletePlace}
+        handleEditPlace={handleEditPlace}
       />
     </>
   );
