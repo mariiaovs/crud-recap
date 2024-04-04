@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   width: 5rem;
   padding: 0.5rem;
 `;
-export default function Form({ id, handlePlace, defaultData }) {
+export default function Form({ id, handlePlace, defaultData, formName }) {
   const router = useRouter();
   function handleSubmit(event) {
     event.preventDefault();
@@ -24,7 +24,7 @@ export default function Form({ id, handlePlace, defaultData }) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <h2>Add new place</h2>
+      <h2>{formName}</h2>
       <label htmlFor="name">
         Name:{" "}
         <input
