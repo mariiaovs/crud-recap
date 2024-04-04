@@ -16,11 +16,12 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default function DetailPage({ places }) {
+export default function DetailPage({ places, handleDeletePlace }) {
   const router = useRouter();
   const { id } = router.query;
   if (!id) return;
   const place = places.find((place) => place.id === id);
+  if (!place) return;
   const { name, location, image, mapURL, description } = place;
   return (
     <StyledArticle>
@@ -31,6 +32,8 @@ export default function DetailPage({ places }) {
       <StyledLink href={mapURL}>Show {name} on google maps</StyledLink>
 
       <p>{description}</p>
+      <button onClick={() => handleDeletePlace(id)}>Delete Place</button>
+      <br />
       <StyledLink href="/">Back to list</StyledLink>
     </StyledArticle>
   );
