@@ -34,6 +34,8 @@ export default function DetailPage({ places, handleDeletePlace }) {
       <p>{description}</p>
       <button onClick={() => handleDeletePlace(id)}>Delete Place</button>
       <br />
+      <StyledLink href={`/places/${id}/edit`}>Edit Place</StyledLink>
+      <br />
       <StyledLink href="/">Back to list</StyledLink>
     </StyledArticle>
   );
