@@ -19,7 +19,7 @@ const StyledLink = styled(Link)`
 export default function DetailPage({ places }) {
   const router = useRouter();
   const { id } = router.query;
-
+  if (!id) return;
   const place = places.find((place) => place.id === id);
   const { name, location, image, mapURL, description } = place;
   return (
